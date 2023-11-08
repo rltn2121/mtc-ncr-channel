@@ -9,10 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 @RestController
 @RequestMapping ("/wallet")
@@ -42,6 +40,4 @@ public class MtcNcrChannelApiController implements MtcNcrChannelApi {
         }
 
     }
-
-
 }
