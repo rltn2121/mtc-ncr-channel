@@ -6,6 +6,8 @@ import mtc.ncr.channel.dto.AccountDto;
 
 import java.sql.*;
 
+import static mtc.ncr.channel.db.SdaMainMasDbio.SDA_MAIN_MAS_I000;
+
 @Slf4j
 public class SdaMainMasRepository {
     public AccountDto find(String acno) throws SQLException {
@@ -29,6 +31,25 @@ public class SdaMainMasRepository {
                 System.out.println(account.toString());
             }
             return account;
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+    public AccountDto insert(String acno, String curC, int ac_jan) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(SDA_MAIN_MAS_I000);
+            pstmt.setString(1, acno);
+            pstmt.setString(2, curC);
+            pstmt.setInt(3, ac_jan);
+            pstmt.executeUpdate();
+            return new AccountDto(acno, curC, ac_jan);
         } catch (SQLException e) {
             log.error("db error", e);
             throw e;
