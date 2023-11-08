@@ -17,7 +17,7 @@ class MemberRepositoryV0Test {
 
         //AccountDto test = new AccountDto("498967108", "KRW", 900000000);
 
-        AccountDto account = repository.find("498967108");
+        AccountDto account = repository.find("498967108", "");
         log.info("account: {}", account);
         //assertThat(account).isEqualTo(test);
     }
@@ -25,7 +25,7 @@ class MemberRepositoryV0Test {
     @Test
     void insert() throws SQLException {
         repository.insert("495475490", "KRW", 1500000);
-        AccountDto find = repository.find("495475490");
+        AccountDto find = repository.find("495475490", "");
         log.info("account: {}", find);
     }
 }
