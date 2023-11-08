@@ -12,24 +12,47 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-@RequestMapping ("/v1")
+@RequestMapping ("/wallet")
 public class MtcNcrChannelApiController implements MtcNcrChannelApi {
     // org.slf4j
     private final static Logger log = LoggerFactory.getLogger(MtcNcrChannelApiController.class);
 
     //   -->  v1/hello
+//    @Override
+//    public ResponseEntity<?> hello(MtcNcrChannelRequest mtcncrchannelrequest) {
+//        MtcNcrChannelResponse mtcncrchannelResponse = new MtcNcrChannelResponse();
+//        mtcncrchannelResponse.setId(mtcncrchannelrequest.getId());
+//        mtcncrchannelResponse.setName(mtcncrchannelrequest.getName());
+//        mtcncrchannelResponse.setTeam(mtcncrchannelrequest.getTeam());
+//        String msg = String.format("Hello, %s", mtcncrchannelrequest.getName());
+//        mtcncrchannelResponse.setMessage(msg);
+//        mtcncrchannelResponse.setTimestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+//
+//        log.info(" response ==> {}", mtcncrchannelResponse);
+//
+//        return ResponseEntity.ok(mtcncrchannelResponse);
+//    }
+//
+//    @Override
+//    public ResponseEntity<?> hell(MtcNcrChannelRequest mtcncrchannelrequest) {
+//        MtcNcrChannelResponse mtcncrchannelResponse = new MtcNcrChannelResponse();
+//        mtcncrchannelResponse.setId(mtcncrchannelrequest.getId());
+//        mtcncrchannelResponse.setName(mtcncrchannelrequest.getName());
+//        mtcncrchannelResponse.setTeam(mtcncrchannelrequest.getTeam());
+//        String msg = String.format("Hell, %s", mtcncrchannelrequest.getName());
+//        mtcncrchannelResponse.setMessage(msg);
+//        mtcncrchannelResponse.setTimestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+//
+//        log.info(" responseeee ==> {}", mtcncrchannelResponse);
+//
+//        return ResponseEntity.ok(mtcncrchannelResponse);
+//    }
+
     @Override
-    public ResponseEntity<?> hello(MtcNcrChannelRequest mtcncrchannelrequest) {
-        MtcNcrChannelResponse mtcncrchannelResponse = new MtcNcrChannelResponse();
-        mtcncrchannelResponse.setId(mtcncrchannelrequest.getId());
-        mtcncrchannelResponse.setName(mtcncrchannelrequest.getName());
-        mtcncrchannelResponse.setTeam(mtcncrchannelrequest.getTeam());
-        String msg = String.format("Hello, %s", mtcncrchannelrequest.getName());
-        mtcncrchannelResponse.setMessage(msg);
-        mtcncrchannelResponse.setTimestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-
-        log.info(" response ==> {}", mtcncrchannelResponse);
-
-        return ResponseEntity.ok(mtcncrchannelResponse);
+    public ResponseEntity<?> walletJohoi(String acno, String cur_c) {
+        String a = acno + cur_c;
+        log.info("wallet ==> {}", cur_c);
+        return ResponseEntity.ok(a);
     }
+
 }
