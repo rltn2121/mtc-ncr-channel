@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mtc-ncr-channel" target="17" />
+      <module name="mtc-ncr-channel" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
