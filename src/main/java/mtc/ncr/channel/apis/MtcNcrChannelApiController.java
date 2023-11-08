@@ -1,5 +1,7 @@
 package mtc.ncr.channel.apis;
 
+import mtc.ncr.channel.Repository.SdaMainMasRepository;
+import mtc.ncr.channel.dto.AccountDto;
 import mtc.ncr.channel.dto.MtcNcrChannelRequest;
 import mtc.ncr.channel.dto.MtcNcrChannelResponse;
 import org.slf4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,43 +19,29 @@ import java.time.format.DateTimeFormatter;
 public class MtcNcrChannelApiController implements MtcNcrChannelApi {
     // org.slf4j
     private final static Logger log = LoggerFactory.getLogger(MtcNcrChannelApiController.class);
-
-    //   -->  v1/hello
-//    @Override
-//    public ResponseEntity<?> hello(MtcNcrChannelRequest mtcncrchannelrequest) {
-//        MtcNcrChannelResponse mtcncrchannelResponse = new MtcNcrChannelResponse();
-//        mtcncrchannelResponse.setId(mtcncrchannelrequest.getId());
-//        mtcncrchannelResponse.setName(mtcncrchannelrequest.getName());
-//        mtcncrchannelResponse.setTeam(mtcncrchannelrequest.getTeam());
-//        String msg = String.format("Hello, %s", mtcncrchannelrequest.getName());
-//        mtcncrchannelResponse.setMessage(msg);
-//        mtcncrchannelResponse.setTimestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-//
-//        log.info(" response ==> {}", mtcncrchannelResponse);
-//
-//        return ResponseEntity.ok(mtcncrchannelResponse);
-//    }
-//
-//    @Override
-//    public ResponseEntity<?> hell(MtcNcrChannelRequest mtcncrchannelrequest) {
-//        MtcNcrChannelResponse mtcncrchannelResponse = new MtcNcrChannelResponse();
-//        mtcncrchannelResponse.setId(mtcncrchannelrequest.getId());
-//        mtcncrchannelResponse.setName(mtcncrchannelrequest.getName());
-//        mtcncrchannelResponse.setTeam(mtcncrchannelrequest.getTeam());
-//        String msg = String.format("Hell, %s", mtcncrchannelrequest.getName());
-//        mtcncrchannelResponse.setMessage(msg);
-//        mtcncrchannelResponse.setTimestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-//
-//        log.info(" responseeee ==> {}", mtcncrchannelResponse);
-//
-//        return ResponseEntity.ok(mtcncrchannelResponse);
-//    }
+    SdaMainMasRepository repository = new SdaMainMasRepository();
 
     @Override
     public ResponseEntity<?> walletJohoi(String acno, String cur_c) {
-        String a = acno + cur_c;
-        log.info("wallet ==> {}", cur_c);
-        return ResponseEntity.ok(a);
+        log.info("acno : {} , cur_c : {}", acno, cur_c);
+        AccountDto account = null;
+        try {
+            if(cur_c == null){
+                account = repository.find(acno, "");
+            }else {
+                account = repository.find(acno, cur_c);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("account: {}", account);
+        if(account != null){
+            return ResponseEntity.ok(account);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+
     }
+
 
 }
