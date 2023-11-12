@@ -9,14 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GojeongDto {
+public class SuccessDto {
     private int sno;
     private String acno;
-    private String trxdt;
-    private String cur_c;
-    private String err_code;
-    private int upmu_g;
-    private int aprv_sno;
-    private int trx_amt;
-    private int nujk_jan;
+    private String err_msg;
 }
