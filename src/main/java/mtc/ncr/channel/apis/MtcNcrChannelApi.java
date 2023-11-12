@@ -16,7 +16,8 @@ public interface MtcNcrChannelApi {
 
     @Operation(summary = "#1. 계좌번호 조회")
     @GetMapping("/{acno}")
-    ResponseEntity<?> walletJohoi(@PathVariable("acno") String acno, @RequestParam(value = "cur_c", required = false) String cur_c);
+    ResponseEntity<?> walletJohoi(@PathVariable("acno") String acno,
+                                  @RequestParam(value = "cur_c", required = false) String cur_c);
 
 
 }

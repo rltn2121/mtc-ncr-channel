@@ -3,12 +3,14 @@ package mtc.ncr.channel.Repository;
 import lombok.extern.slf4j.Slf4j;
 import mtc.ncr.channel.db.DBConnectionUtil;
 import mtc.ncr.channel.dto.AccountDto;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
 import static mtc.ncr.channel.db.SdaMainMasDbio.SDA_MAIN_MAS_I000;
 
 @Slf4j
+@Repository
 public class SdaMainMasRepository {
     public AccountDto find(String acno, String cur_c) throws SQLException {
         Connection con = null;
