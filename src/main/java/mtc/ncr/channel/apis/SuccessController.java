@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping ("/isSuccess")
+@RequestMapping ("/wallet")
 public class SuccessController implements SuccessApi {
     // org.slf4j
     private final static Logger log = LoggerFactory.getLogger(HistoryController.class);
