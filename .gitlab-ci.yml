@@ -1,7 +1,7 @@
 variables:
   DOCKER_REGISTRY: 006046112659.dkr.ecr.ap-northeast-2.amazonaws.com/coc
   AWS_DEFAULT_REGION: ap-northeast-2
-  EKS_NAMESPACE: coc-tas
+  EKS_NAMESPACE: coc-mtc
   SERVICE_PORT: 8080
 
 stages:
