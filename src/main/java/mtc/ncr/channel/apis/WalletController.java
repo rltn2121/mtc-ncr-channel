@@ -25,7 +25,7 @@ public class WalletController implements WalletApi {
         log.info("acno : {}", acno);
         List<AccountDto> result = repository.johoiAll(acno);
 
-        if(result != null){
+        if(!result.isEmpty()){
             return ResponseEntity.ok(result);
         }else{
             return ResponseEntity.noContent().build();
