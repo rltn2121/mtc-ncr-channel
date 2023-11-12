@@ -2,15 +2,14 @@ package mtc.ncr.channel.apis;
 
 import mtc.ncr.channel.Repository.SdaMainMasRepository;
 import mtc.ncr.channel.dto.AccountDto;
-import mtc.ncr.channel.dto.MtcNcrChannelRequest;
-import mtc.ncr.channel.dto.MtcNcrChannelResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -21,19 +20,22 @@ public class MtcNcrChannelApiController implements MtcNcrChannelApi {
     SdaMainMasRepository repository = new SdaMainMasRepository();
 
     @Override
-    public ResponseEntity<?> walletJohoi(String acno, String cur_c) {
-        log.info("acno : {} , cur_c : {}", acno, cur_c);
-        AccountDto account = null;
-        try {
-            if(cur_c == null){
-                account = repository.find(acno, "");
-            }else {
-                account = repository.find(acno, cur_c);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ResponseEntity<?> JohoiAll(String acno) throws Exception {
+        log.info("acno : {}", acno);
+        List<AccountDto> result = repository.johoiAll(acno);
+
+        if(result != null){
+            return ResponseEntity.ok(result);
+        }else{
+            return ResponseEntity.noContent().build();
         }
-        log.info("account: {}", account);
+    }
+
+    @Override
+    public ResponseEntity<?> JohoiByCurC(String acno, String cur_c) throws Exception {
+        log.info("acno : {} , cur_c : {}", acno, cur_c);
+        AccountDto account = repository.johoiByCurC(acno, cur_c);
+
         if(account != null){
             return ResponseEntity.ok(account);
         }else{

@@ -6,41 +6,64 @@ import mtc.ncr.channel.dto.AccountDto;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static mtc.ncr.channel.db.SdaMainMasDbio.SDA_MAIN_MAS_I000;
 
 @Slf4j
 @Repository
 public class SdaMainMasRepository {
-    public AccountDto find(String acno, String cur_c) throws SQLException {
+    public List<AccountDto> johoiAll(String acno) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        AccountDto account = null;
-        String sql = "";
-        if(cur_c.isEmpty()){
-            sql = "select * from sda_main_mas where acno = ?";
-        }else{
-            sql = "select * from sda_main_mas where acno = ? and cur_c = ?";
-        }
+        List<AccountDto> result = new ArrayList<>();
+
+        String sql = "select * from sda_main_mas where acno = ?";
 
         try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, acno);
-            if (!cur_c.isEmpty()){
-                pstmt.setString(2, cur_c);
-            }
 
             rs = pstmt.executeQuery();
             while(rs.next()){
                 String acno_out = rs.getString("acno");
                 String cur_c_out = rs.getString("cur_c");
                 int ac_jan = rs.getInt("ac_jan");
-                account = new AccountDto(acno_out, cur_c_out, ac_jan);
-                System.out.println(account.toString());
+                result.add(new AccountDto(acno_out, cur_c_out, ac_jan));
             }
-            return account;
+            return result;
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con, pstmt, null);
+        }
+    }
+
+    public AccountDto johoiByCurC(String acno, String cur_c) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        AccountDto result = null;
+
+        String sql = "select * from sda_main_mas where acno = ? and cur_c = ?";
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, acno);
+            pstmt.setString(2, cur_c);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                String acno_out = rs.getString("acno");
+                String cur_c_out = rs.getString("cur_c");
+                int ac_jan = rs.getInt("ac_jan");
+                result = new AccountDto(acno_out, cur_c_out, ac_jan);
+            }
+            return result;
         } catch (SQLException e) {
             log.error("db error", e);
             throw e;
