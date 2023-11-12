@@ -20,7 +20,7 @@ public class SdaMainMasRepository {
         ResultSet rs = null;
         List<AccountDto> result = new ArrayList<>();
 
-        String sql = "select * from sda_main_mas where acno = ?";
+        String sql = "select * from chl_sda_main_mas where acno = ?";
 
         try {
             con = getConnection();
@@ -49,7 +49,7 @@ public class SdaMainMasRepository {
         ResultSet rs = null;
         AccountDto result = null;
 
-        String sql = "select * from sda_main_mas where acno = ? and cur_c = ?";
+        String sql = "select * from chl_sda_main_mas where acno = ? and cur_c = ?";
 
         try {
             con = getConnection();

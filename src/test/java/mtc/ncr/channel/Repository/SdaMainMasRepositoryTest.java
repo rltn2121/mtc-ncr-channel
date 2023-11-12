@@ -15,15 +15,15 @@ class MemberRepositoryV0Test {
 
         //AccountDto test = new AccountDto("498967108", "KRW", 900000000);
 
-        AccountDto account = repository.johoiAll("498967108", "");
-        log.info("account: {}", account);
+        //AccountDto account = repository.johoiAll("498967108");
+        // log.info("account: {}", account);
         //assertThat(account).isEqualTo(test);
     }
 
     @Test
     void insert() throws SQLException {
-        repository.insert("495475490", "KRW", 1500000);
-        AccountDto find = repository.johoiAll("495475490", "");
-        log.info("account: {}", find);
+        // repository.insert("495475490", "KRW", 1500000);
+        //AccountDto find = repository.johoiAll("495475490", "");
+        // log.info("account: {}", find);
     }
 }

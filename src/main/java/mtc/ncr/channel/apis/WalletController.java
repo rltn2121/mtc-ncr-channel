@@ -1,23 +1,24 @@
 package mtc.ncr.channel.apis;
 
 import mtc.ncr.channel.Repository.SdaMainMasRepository;
+import mtc.ncr.channel.Repository.SdtGojeongSlvRepository;
 import mtc.ncr.channel.dto.AccountDto;
+import mtc.ncr.channel.dto.GojeongDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 
 @RestController
 @RequestMapping ("/wallet")
-public class MtcNcrChannelApiController implements MtcNcrChannelApi {
+public class WalletController implements WalletApi {
     // org.slf4j
-    private final static Logger log = LoggerFactory.getLogger(MtcNcrChannelApiController.class);
-    SdaMainMasRepository repository = new SdaMainMasRepository();
+    private final static Logger log = LoggerFactory.getLogger(WalletController.class);
+    private SdaMainMasRepository repository = new SdaMainMasRepository();
 
     @Override
     public ResponseEntity<?> JohoiAll(String acno) throws Exception {
@@ -41,6 +42,6 @@ public class MtcNcrChannelApiController implements MtcNcrChannelApi {
         }else{
             return ResponseEntity.noContent().build();
         }
-
     }
+
 }
