@@ -21,9 +21,9 @@ public class HistoryController implements HistoryApi {
     private SdtGojeongSlvRepository repository = new SdtGojeongSlvRepository();
 
     @Override
-    public ResponseEntity<?> trxHistory(String acno, String cur_c, int upmu_g) throws Exception {
-        log.info("acno : {} , cur_c : {}, upmu_g : {}", acno, cur_c, upmu_g);
-        List<GojeongDto> result = repository.trxHistory(acno,cur_c,upmu_g);
+    public ResponseEntity<?> trxHistory(String acno) throws Exception {
+        log.info("acno : {}", acno);
+        List<GojeongDto> result = repository.trxHistory(acno);
         if(result.size() > 0) {
             return ResponseEntity.ok(result);
         }else{

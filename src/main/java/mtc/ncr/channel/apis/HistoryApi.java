@@ -10,8 +10,6 @@ public interface HistoryApi {
 
     @Operation(summary = "#3. 거래내역  조회")
     @GetMapping("/{acno}")
-    ResponseEntity<?> trxHistory(@PathVariable("acno") String acno,
-                                  @RequestParam(value = "cur_c") String cur_c,
-                                 @RequestParam(value = "upmu_g") int upmu_g) throws Exception;
+    ResponseEntity<?> trxHistory(@PathVariable("acno") String acno) throws Exception;
 
 }

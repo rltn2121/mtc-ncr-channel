@@ -15,20 +15,18 @@ import static mtc.ncr.channel.db.SdaMainMasDbio.SDA_MAIN_MAS_I000;
 @Slf4j
 @Repository
 public class SdtGojeongSlvRepository {
-    public List<GojeongDto> trxHistory(String acno, String cur_c, int upmu_g) throws SQLException {
+    public List<GojeongDto> trxHistory(String acno) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<GojeongDto> result = new ArrayList<>();
 
-        String sql = "select * from chl_sdt_gojeong_slv where acno = ? and cur_c = ? and upmu_g = ?";
+        String sql = "select * from chl_sdt_gojeong_slv where acno = ?";
 
         try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, acno);
-            pstmt.setString(2, cur_c);
-            pstmt.setInt(3, upmu_g);
 
             rs = pstmt.executeQuery();
             while(rs.next()) {
