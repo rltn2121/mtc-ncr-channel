@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping ("/history")
+@RequestMapping ("/wallet")
 public class HistoryController implements HistoryApi {
     // org.slf4j
     private final static Logger log = LoggerFactory.getLogger(HistoryController.class);
