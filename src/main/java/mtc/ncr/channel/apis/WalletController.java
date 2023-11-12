@@ -18,7 +18,6 @@ public class WalletController implements WalletApi {
     private final static Logger log = LoggerFactory.getLogger(WalletController.class);
     private SdaMainMasRepository repository = new SdaMainMasRepository();
 
-    @Override
     public ResponseEntity<?> JohoiAll(String acno) throws Exception {
         log.info("acno : {}", acno);
         List<AccountDto> result = repository.johoiAll(acno);
@@ -30,7 +29,6 @@ public class WalletController implements WalletApi {
         }
     }
 
-    @Override
     public ResponseEntity<?> JohoiByCurC(String acno, String cur_c) throws Exception {
         log.info("acno : {} , cur_c : {}", acno, cur_c);
         AccountDto account = repository.johoiByCurC(acno, cur_c);
@@ -41,5 +39,4 @@ public class WalletController implements WalletApi {
             return ResponseEntity.noContent().build();
         }
     }
-
 }

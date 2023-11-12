@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 public interface WalletApi {
-
     @Operation(summary = "#1. 전 계좌 조회")
     @GetMapping("/{acno}/all")
     ResponseEntity<?> JohoiAll(@PathVariable("acno") String acno) throws Exception;
