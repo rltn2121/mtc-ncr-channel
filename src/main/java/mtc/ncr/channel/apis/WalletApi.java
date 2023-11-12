@@ -14,4 +14,5 @@ public interface WalletApi {
     @GetMapping("/{acno}")
     ResponseEntity<?> JohoiByCurC(@PathVariable("acno") String acno,
                                   @RequestParam(value = "cur_c") String cur_c) throws Exception;
+
 }
