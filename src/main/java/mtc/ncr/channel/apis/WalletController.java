@@ -1,9 +1,7 @@
 package mtc.ncr.channel.apis;
 
 import mtc.ncr.channel.Repository.SdaMainMasRepository;
-import mtc.ncr.channel.Repository.SdtGojeongSlvRepository;
 import mtc.ncr.channel.dto.AccountDto;
-import mtc.ncr.channel.dto.GojeongDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

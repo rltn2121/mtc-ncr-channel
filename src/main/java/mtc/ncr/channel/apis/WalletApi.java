@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 public interface WalletApi {
 
+    ResponseEntity<?> JohoiAll(String acno) throws Exception;
+
+    ResponseEntity<?> JohoiByCurC(String acno, String cur_c) throws Exception;
+
     public interface MtcNcrChannelApi {
 
         @Operation(summary = "#1. 전 계좌 조회")
