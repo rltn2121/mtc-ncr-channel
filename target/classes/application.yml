@@ -1,4 +1,7 @@
 spring:
+#  server:
+#    host:
+#      api: k8s-cocmtc-cocmtcin-52b788a054-1189666070.ap-northeast-2.elb.amazonaws.com
   datasource:
     url: jdbc:postgresql://15.165.34.151:5432/mtc_db
     username: team9
