@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.SQLException;
 
 
-@CrossOrigin
 @RestController
 @RequestMapping ("/wallet")
 public class MtcNcrChannelApiController implements MtcNcrChannelApi {
