@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto {
-    public String acno;
-    public String cur_c;
-    public int ac_jan;
+public class CheckDto {
+    private int upmuG;
+    private String status;
+    private String err_msg;
 }
