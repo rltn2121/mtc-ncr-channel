@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface CheckApi {
     @Operation(summary = "#0. 충전/결제 결과 확인")
-    @GetMapping("/{AccountDto}")
+    @GetMapping("/{aprv_sno}")
     ResponseEntity<?> trxResultCheck(@PathVariable("aprv_sno") String aprv_sno) throws Exception;
 
 }
