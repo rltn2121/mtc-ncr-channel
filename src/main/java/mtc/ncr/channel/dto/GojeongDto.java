@@ -16,7 +16,7 @@ public class GojeongDto {
     private String cur_c;
     private String err_code;
     private int upmu_g;
-    private int aprv_sno;
+    private String aprv_sno;
     private int trx_amt;
     private int nujk_jan;
 }

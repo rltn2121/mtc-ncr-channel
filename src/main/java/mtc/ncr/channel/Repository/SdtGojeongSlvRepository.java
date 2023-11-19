@@ -37,7 +37,7 @@ public class SdtGojeongSlvRepository {
                 String cur_c_out = rs.getString("cur_c");
                 String err_msg_out = rs.getString("err_msg");
                 int upmu_g_out = rs.getInt("upmu_g");
-                int aprv_sno_out = rs.getInt("aprv_sno");
+                String aprv_sno_out = rs.getString("aprv_sno");
                 int trx_amt_out = rs.getInt("trx_amt");
                 int nujk_jan_out = rs.getInt("nujk_jan");
                 result.add(new GojeongDto(sno_out, acno_out, trxdt_out, cur_c_out, err_msg_out, upmu_g_out, aprv_sno_out, trx_amt_out, nujk_jan_out));
