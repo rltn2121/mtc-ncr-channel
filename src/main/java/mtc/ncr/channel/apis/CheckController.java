@@ -16,6 +16,9 @@ public class CheckController implements CheckApi{
     @Override
     public ResponseEntity<?> trxResultCheck(String aprv_sno) throws Exception {
         CheckDto result = repository.trxResultCheck(aprv_sno);
+        if(result == null) {
+            result = new CheckDto(99, "원장정보없음", "원장정보없음");
+        }
         return ResponseEntity.ok(result);
     }
 }
