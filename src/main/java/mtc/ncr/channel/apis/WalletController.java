@@ -29,14 +29,14 @@ public class WalletController implements WalletApi {
         }
     }
 
-    public ResponseEntity<?> JohoiByCurC(String acno, String cur_c) throws Exception {
-        log.info("acno : {} , cur_c : {}", acno, cur_c);
-        AccountDto account = repository.johoiByCurC(acno, cur_c);
-
-        if(account != null){
-            return ResponseEntity.ok(account);
-        }else{
-            return ResponseEntity.noContent().build();
-        }
-    }
+//    public ResponseEntity<?> JohoiByCurC(String acno, String cur_c) throws Exception {
+//        log.info("acno : {} , cur_c : {}", acno, cur_c);
+//        AccountDto account = repository.johoiByCurC(acno, cur_c);
+//
+//        if(account != null){
+//            return ResponseEntity.ok(account);
+//        }else{
+//            return ResponseEntity.noContent().build();
+//        }
+//    }
 }

@@ -10,9 +10,9 @@ public interface WalletApi {
     @GetMapping("/all/{acno}")
     ResponseEntity<?> JohoiAll(@PathVariable("acno") String acno) throws Exception;
 
-    @Operation(summary = "#2. 통화코드별  조회")
-    @GetMapping("/{acno}")
-    ResponseEntity<?> JohoiByCurC(@PathVariable("acno") String acno,
-                                  @RequestParam(value = "cur_c") String cur_c) throws Exception;
+//    @Operation(summary = "#2. 통화코드별  조회")
+//    @GetMapping("/{acno}")
+//    ResponseEntity<?> JohoiByCurC(@PathVariable("acno") String acno,
+//                                  @RequestParam(value = "cur_c") String cur_c) throws Exception;
 
 }
